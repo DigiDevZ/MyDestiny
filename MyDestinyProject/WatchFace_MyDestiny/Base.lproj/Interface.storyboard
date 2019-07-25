@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="TJI-qO-ExQ">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
+    </dependencies>
+    <scenes>
+        <!--CharacterIC-->
+        <scene sceneID="OCo-lU-XVw">
+            <objects>
+                <controller identifier="CharacterIC" id="TJI-qO-ExQ" customClass="CharacterInterfaceController" customModule="WatchFace_MyDestiny_Extension">
+                    <items>
+                        <table alignment="left" id="EDr-Re-0pT">
+                            <items>
+                                <tableRow identifier="RowController" id="tGx-Mm-IiP" customClass="RowController" customModule="WatchFace_MyDestiny_Extension">
+                                    <group key="rootItem" width="1" alignment="left" id="vi1-TD-sfa">
+                                        <items>
+                                            <imageView alignment="center" verticalAlignment="center" contentMode="scaleAspectFill" id="EEm-xI-yak" userLabel="iv_characterEmblem"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="iv_characterEmblem" destination="EEm-xI-yak" id="pKL-S5-2Rk"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="EDr-Re-0pT" id="Rm2-o7-vXz"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-198" y="5"/>
+        </scene>
+    </scenes>
+</document>

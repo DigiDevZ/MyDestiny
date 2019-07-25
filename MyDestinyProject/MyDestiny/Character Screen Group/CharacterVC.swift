@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class CharacterVC: AuthenticateVC, UITableViewDelegate, UITableViewDataSource {
+class CharacterVC: AuthenticateVC, UITableViewDelegate, UITableViewDataSource, WCSessionDelegate {
+    
+    fileprivate let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
     //MARK: Outlet
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +30,9 @@ class CharacterVC: AuthenticateVC, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        session?.delegate = self
+        session?.activate()
         
         //Disable scrolling.
         tableView.isScrollEnabled = false
@@ -72,6 +78,31 @@ class CharacterVC: AuthenticateVC, UITableViewDelegate, UITableViewDataSource {
         destination?.apiKey = apiKey
     }
     
+    //---------------------
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        //If the session becomes inactive
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        //If the session deactivates.
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        DispatchQueue.main.async {
+            if(message["getCharacters"] as? Bool) != nil{
+                
+                //key to send message over is "characters"
+                
+                //Need to figure out why i cant send characters class info over.
+                replyHandler( ["characters" : self.characters] )
+            }
+        }
+    }
     
     
 }

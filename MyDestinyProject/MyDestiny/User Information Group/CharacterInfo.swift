@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CharacterInfo {
+class CharacterInfo : NSObject, NSCoding{
     
     //Stored
     var characterId = ""
@@ -59,5 +59,30 @@ class CharacterInfo {
         self.characterEmblemBackPath = characterEmblemBackPath
         self.characterLevel = characterLevel
     }
+    
+    //Functions to conform to NSCoding.
+    
+    //To decode the object
+    required convenience init?(coder aDecoder : NSCoder) {
+        self.init(characterId: "0", characterLight: 0, characterClassType: 0, characterEmblemPath: "0", characterEmblemBackPath: "0", characterLevel: 0)
+        
+        characterId = aDecoder.decodeObject(forKey: "characterId") as! String
+        characterClassType = aDecoder.decodeObject(forKey: "characterClassType") as! Int
+        characterEmblemBack = aDecoder.decodeObject(forKey: "characterEmblemBack") as! UIImage
+        characterLight = aDecoder.decodeObject(forKey: "characterLight") as! Int
+        //characterItemInventory = aDecoder.decodeObject(forKey: "characterItemInventory") as! [ItemInfo]
+        
+    }
+    
+    //To encode the object
+    func encode(with aCoder: NSCoder) {
+        
+        aCoder.encode(characterId, forKey: "characterId")
+        aCoder.encode(characterClassType, forKey: "characterClassType")
+        aCoder.encode(characterEmblemBack, forKey: "characterEmblemBack")
+        aCoder.encode(characterLight, forKey: "characterLight")
+        
+    }
+    
     
 }

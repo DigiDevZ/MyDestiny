@@ -18,6 +18,17 @@
 		A734E585229CB9EB005F6023 /* ItemCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734E584229CB9EB005F6023 /* ItemCollectionVC.swift */; };
 		A734E587229CBED0005F6023 /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734E586229CBED0005F6023 /* ItemCollectionViewCell.swift */; };
 		A734E58B229CC4C6005F6023 /* ItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A734E58A229CC4C6005F6023 /* ItemVC.swift */; };
+		A761BF9F22E92F4900DBA766 /* ApiEndpointUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BF9E22E92F4900DBA766 /* ApiEndpointUtility.swift */; };
+		A761BFA622E9422200DBA766 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A761BFA422E9422200DBA766 /* Interface.storyboard */; };
+		A761BFA822E9422400DBA766 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A761BFA722E9422400DBA766 /* Assets.xcassets */; };
+		A761BFAF22E9422400DBA766 /* WatchFace_MyDestiny Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A761BFAE22E9422400DBA766 /* WatchFace_MyDestiny Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A761BFB622E9422400DBA766 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFB522E9422400DBA766 /* ExtensionDelegate.swift */; };
+		A761BFB822E9422400DBA766 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A761BFB722E9422400DBA766 /* Assets.xcassets */; };
+		A761BFBC22E9422400DBA766 /* WatchFace_MyDestiny.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A761BFA222E9422200DBA766 /* WatchFace_MyDestiny.app */; };
+		A761BFC622E943E200DBA766 /* CharacterInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77F6A2822975CEC00B24B6D /* CharacterInfo.swift */; };
+		A761BFC722E943E500DBA766 /* ItemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79AAE7A229B4966002EB858 /* ItemInfo.swift */; };
+		A761BFC922E9452800DBA766 /* RowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFC822E9452800DBA766 /* RowController.swift */; };
+		A761BFCB22E9470400DBA766 /* CharacterInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A761BFCA22E9470400DBA766 /* CharacterInterfaceController.swift */; };
 		A77F6A112297538300B24B6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77F6A102297538300B24B6D /* AppDelegate.swift */; };
 		A77F6A132297538300B24B6D /* AuthenticateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77F6A122297538300B24B6D /* AuthenticateVC.swift */; };
 		A77F6A162297538300B24B6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A77F6A142297538300B24B6D /* Main.storyboard */; };
@@ -33,7 +44,46 @@
 		A7A2DD8D229FADC10004B8AB /* ItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A2DD8C229FADC10004B8AB /* ItemHeaderView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A761BFB022E9422400DBA766 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A77F6A052297538300B24B6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A761BFAD22E9422400DBA766;
+			remoteInfo = "WatchFace_MyDestiny Extension";
+		};
+		A761BFBA22E9422400DBA766 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A77F6A052297538300B24B6D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A761BFA122E9422200DBA766;
+			remoteInfo = WatchFace_MyDestiny;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		A761BFC022E9422400DBA766 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A761BFAF22E9422400DBA766 /* WatchFace_MyDestiny Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A761BFC422E9422400DBA766 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				A761BFBC22E9422400DBA766 /* WatchFace_MyDestiny.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A77F6A252297568E00B24B6D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,6 +108,17 @@
 		A734E584229CB9EB005F6023 /* ItemCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionVC.swift; sourceTree = "<group>"; };
 		A734E586229CBED0005F6023 /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		A734E58A229CC4C6005F6023 /* ItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemVC.swift; sourceTree = "<group>"; };
+		A761BF9E22E92F4900DBA766 /* ApiEndpointUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpointUtility.swift; sourceTree = "<group>"; };
+		A761BFA222E9422200DBA766 /* WatchFace_MyDestiny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchFace_MyDestiny.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A761BFA522E9422200DBA766 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		A761BFA722E9422400DBA766 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A761BFA922E9422400DBA766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A761BFAE22E9422400DBA766 /* WatchFace_MyDestiny Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchFace_MyDestiny Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A761BFB522E9422400DBA766 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		A761BFB722E9422400DBA766 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A761BFB922E9422400DBA766 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A761BFC822E9452800DBA766 /* RowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowController.swift; sourceTree = "<group>"; };
+		A761BFCA22E9470400DBA766 /* CharacterInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInterfaceController.swift; sourceTree = "<group>"; };
 		A77F6A0D2297538300B24B6D /* MyDestiny.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyDestiny.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77F6A102297538300B24B6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A77F6A122297538300B24B6D /* AuthenticateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateVC.swift; sourceTree = "<group>"; };
@@ -76,6 +137,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A761BFAB22E9422400DBA766 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A77F6A0A2297538300B24B6D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,6 +178,28 @@
 			path = "Item Screen Group";
 			sourceTree = "<group>";
 		};
+		A761BFA322E9422200DBA766 /* WatchFace_MyDestiny */ = {
+			isa = PBXGroup;
+			children = (
+				A761BFA422E9422200DBA766 /* Interface.storyboard */,
+				A761BFA722E9422400DBA766 /* Assets.xcassets */,
+				A761BFA922E9422400DBA766 /* Info.plist */,
+			);
+			path = WatchFace_MyDestiny;
+			sourceTree = "<group>";
+		};
+		A761BFB222E9422400DBA766 /* WatchFace_MyDestiny Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A761BFCA22E9470400DBA766 /* CharacterInterfaceController.swift */,
+				A761BFB522E9422400DBA766 /* ExtensionDelegate.swift */,
+				A761BFC822E9452800DBA766 /* RowController.swift */,
+				A761BFB722E9422400DBA766 /* Assets.xcassets */,
+				A761BFB922E9422400DBA766 /* Info.plist */,
+			);
+			path = "WatchFace_MyDestiny Extension";
+			sourceTree = "<group>";
+		};
 		A77F6A042297538300B24B6D = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +208,8 @@
 				A717C7D42299FD5C002D0B74 /* SwiftKeychainWrapper.framework */,
 				A717C7D12299FD56002D0B74 /* OAuthSwift.framework */,
 				A77F6A0F2297538300B24B6D /* MyDestiny */,
+				A761BFA322E9422200DBA766 /* WatchFace_MyDestiny */,
+				A761BFB222E9422400DBA766 /* WatchFace_MyDestiny Extension */,
 				A77F6A0E2297538300B24B6D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				A77F6A0D2297538300B24B6D /* MyDestiny.app */,
+				A761BFA222E9422200DBA766 /* WatchFace_MyDestiny.app */,
+				A761BFAE22E9422400DBA766 /* WatchFace_MyDestiny Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -134,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				A77F6A102297538300B24B6D /* AppDelegate.swift */,
+				A761BF9E22E92F4900DBA766 /* ApiEndpointUtility.swift */,
 				A77F6A122297538300B24B6D /* AuthenticateVC.swift */,
 				A77F6A2F2297784700B24B6D /* ExtensionAuthenticateVC.swift */,
 				A77F6A2C229763F700B24B6D /* User Information Group */,
@@ -161,6 +256,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A761BFA122E9422200DBA766 /* WatchFace_MyDestiny */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A761BFC122E9422400DBA766 /* Build configuration list for PBXNativeTarget "WatchFace_MyDestiny" */;
+			buildPhases = (
+				A761BFA022E9422200DBA766 /* Resources */,
+				A761BFC022E9422400DBA766 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A761BFB122E9422400DBA766 /* PBXTargetDependency */,
+			);
+			name = WatchFace_MyDestiny;
+			productName = WatchFace_MyDestiny;
+			productReference = A761BFA222E9422200DBA766 /* WatchFace_MyDestiny.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		A761BFAD22E9422400DBA766 /* WatchFace_MyDestiny Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A761BFBD22E9422400DBA766 /* Build configuration list for PBXNativeTarget "WatchFace_MyDestiny Extension" */;
+			buildPhases = (
+				A761BFAA22E9422400DBA766 /* Sources */,
+				A761BFAB22E9422400DBA766 /* Frameworks */,
+				A761BFAC22E9422400DBA766 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchFace_MyDestiny Extension";
+			productName = "WatchFace_MyDestiny Extension";
+			productReference = A761BFAE22E9422400DBA766 /* WatchFace_MyDestiny Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		A77F6A0C2297538300B24B6D /* MyDestiny */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A77F6A1F2297538500B24B6D /* Build configuration list for PBXNativeTarget "MyDestiny" */;
@@ -169,10 +298,12 @@
 				A77F6A0A2297538300B24B6D /* Frameworks */,
 				A77F6A0B2297538300B24B6D /* Resources */,
 				A77F6A252297568E00B24B6D /* Embed Frameworks */,
+				A761BFC422E9422400DBA766 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A761BFBB22E9422400DBA766 /* PBXTargetDependency */,
 			);
 			name = MyDestiny;
 			productName = MyDestiny;
@@ -189,6 +320,12 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Zakarie Ortiz";
 				TargetAttributes = {
+					A761BFA122E9422200DBA766 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					A761BFAD22E9422400DBA766 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 					A77F6A0C2297538300B24B6D = {
 						CreatedOnToolsVersion = 10.2;
 					};
@@ -208,11 +345,30 @@
 			projectRoot = "";
 			targets = (
 				A77F6A0C2297538300B24B6D /* MyDestiny */,
+				A761BFA122E9422200DBA766 /* WatchFace_MyDestiny */,
+				A761BFAD22E9422400DBA766 /* WatchFace_MyDestiny Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A761BFA022E9422200DBA766 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A761BFA822E9422400DBA766 /* Assets.xcassets in Resources */,
+				A761BFA622E9422200DBA766 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A761BFAC22E9422400DBA766 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A761BFB822E9422400DBA766 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A77F6A0B2297538300B24B6D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -226,10 +382,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A761BFAA22E9422400DBA766 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A761BFC922E9452800DBA766 /* RowController.swift in Sources */,
+				A761BFCB22E9470400DBA766 /* CharacterInterfaceController.swift in Sources */,
+				A761BFB622E9422400DBA766 /* ExtensionDelegate.swift in Sources */,
+				A761BFC622E943E200DBA766 /* CharacterInfo.swift in Sources */,
+				A761BFC722E943E500DBA766 /* ItemInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A77F6A092297538300B24B6D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A761BF9F22E92F4900DBA766 /* ApiEndpointUtility.swift in Sources */,
 				A734E585229CB9EB005F6023 /* ItemCollectionVC.swift in Sources */,
 				A77F6A132297538300B24B6D /* AuthenticateVC.swift in Sources */,
 				A77F6A2722975CDF00B24B6D /* UserInfo.swift in Sources */,
@@ -248,7 +417,28 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A761BFB122E9422400DBA766 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A761BFAD22E9422400DBA766 /* WatchFace_MyDestiny Extension */;
+			targetProxy = A761BFB022E9422400DBA766 /* PBXContainerItemProxy */;
+		};
+		A761BFBB22E9422400DBA766 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A761BFA122E9422200DBA766 /* WatchFace_MyDestiny */;
+			targetProxy = A761BFBA22E9422400DBA766 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		A761BFA422E9422200DBA766 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A761BFA522E9422200DBA766 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		A77F6A142297538300B24B6D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -268,6 +458,88 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A761BFBE22E9422400DBA766 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UTD77MDJ25;
+				INFOPLIST_FILE = "WatchFace_MyDestiny Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ortizzakarie.MyDestiny.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		A761BFBF22E9422400DBA766 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UTD77MDJ25;
+				INFOPLIST_FILE = "WatchFace_MyDestiny Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ortizzakarie.MyDestiny.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
+		A761BFC222E9422400DBA766 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UTD77MDJ25;
+				IBSC_MODULE = WatchFace_MyDestiny_Extension;
+				INFOPLIST_FILE = WatchFace_MyDestiny/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ortizzakarie.MyDestiny.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Debug;
+		};
+		A761BFC322E9422400DBA766 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UTD77MDJ25;
+				IBSC_MODULE = WatchFace_MyDestiny_Extension;
+				INFOPLIST_FILE = WatchFace_MyDestiny/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ortizzakarie.MyDestiny.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 5.2;
+			};
+			name = Release;
+		};
 		A77F6A1D2297538500B24B6D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -431,6 +703,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A761BFBD22E9422400DBA766 /* Build configuration list for PBXNativeTarget "WatchFace_MyDestiny Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A761BFBE22E9422400DBA766 /* Debug */,
+				A761BFBF22E9422400DBA766 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A761BFC122E9422400DBA766 /* Build configuration list for PBXNativeTarget "WatchFace_MyDestiny" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A761BFC222E9422400DBA766 /* Debug */,
+				A761BFC322E9422400DBA766 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A77F6A082297538300B24B6D /* Build configuration list for PBXProject "MyDestiny" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

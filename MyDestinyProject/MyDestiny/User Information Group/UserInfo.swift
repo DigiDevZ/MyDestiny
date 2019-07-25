@@ -63,6 +63,5 @@ class UserInfo {
         self.userMembershipId = membershipID
         self.userTokenType = tokenType
     }
-    
 }
 
