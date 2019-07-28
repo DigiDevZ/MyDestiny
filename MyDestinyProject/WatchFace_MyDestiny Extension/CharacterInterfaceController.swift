@@ -28,6 +28,7 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
     fileprivate let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
     var characters = [CharacterInfo]()
+    var characterImageArray = [UIImage]()
     
     @IBOutlet weak var tableView: WKInterfaceTable!
     
@@ -71,9 +72,9 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
                 
                 DispatchQueue.main.async {
                     //MARK: I think this class cannot sent correctly as a payload, will be fixing this soon.
-                    if let data = replyData["characters"] as? [CharacterInfo] {
+                    if let data = replyData["characters"] as? UIImage {
                         print("data grabbed")
-                        self.characters.append(contentsOf: data)
+                        self.characterImageArray.append(data)
                         //If the characters have been catched, then load the table view.
                         self.loadTableView()
                     }
@@ -87,11 +88,12 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
     public func loadTableView() {
         tableView.setNumberOfRows(characters.count, withRowType: "RowController")
         
+        //Repalce this with a foreach loop.
         for (i, _) in characters.enumerated() {
             if let rowController = tableView.rowController(at: i) as? RowController {
                 
                 //Set the image to the view.
-                rowController.iv_characterEmblem.setImage(characters[i].characterEmblemBack)
+                rowController.iv_characterEmblem.setImage(characterImageArray[i])
             }
         }
     }

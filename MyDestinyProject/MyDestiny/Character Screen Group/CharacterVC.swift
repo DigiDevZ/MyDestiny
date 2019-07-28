@@ -78,7 +78,7 @@ class CharacterVC: AuthenticateVC, UITableViewDelegate, UITableViewDataSource, W
         destination?.apiKey = apiKey
     }
     
-    //---------------------
+    //MARK: Watch session methods.
     
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         
@@ -99,7 +99,17 @@ class CharacterVC: AuthenticateVC, UITableViewDelegate, UITableViewDataSource, W
                 //key to send message over is "characters"
                 
                 //Need to figure out why i cant send characters class info over.
-                replyHandler( ["characters" : self.characters] )
+                var characterImages = [UIImage]()
+                
+                #warning("Payloads still cannot be delivered")
+                    //Even with just sending one image, the payload still cannot be delivered, so I will need to figure out how to circumvent this.
+                
+                //Sending over the images instead.
+                for character in self.characters {
+                    characterImages.append(character.characterEmblemBack)
+                }
+            
+                replyHandler( ["characters" : self.characters[0].characterEmblemBack] )
             }
         }
     }
