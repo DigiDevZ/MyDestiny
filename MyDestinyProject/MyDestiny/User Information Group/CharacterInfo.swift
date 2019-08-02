@@ -67,21 +67,26 @@ class CharacterInfo : NSObject, NSCoding{
         self.init(characterId: "0", characterLight: 0, characterClassType: 0, characterEmblemPath: "0", characterEmblemBackPath: "0", characterLevel: 0)
         
         characterId = aDecoder.decodeObject(forKey: "characterId") as! String
-        characterClassType = aDecoder.decodeObject(forKey: "characterClassType") as! Int
-        characterEmblemBack = aDecoder.decodeObject(forKey: "characterEmblemBack") as! UIImage
         characterLight = aDecoder.decodeObject(forKey: "characterLight") as! Int
-        //characterItemInventory = aDecoder.decodeObject(forKey: "characterItemInventory") as! [ItemInfo]
+        characterClassType = aDecoder.decodeObject(forKey: "characterClassType") as! Int
+        characterEmblemPath = aDecoder.decodeObject(forKey: "characterEmblemPath") as! String
+        characterEmblemBackPath = aDecoder.decodeObject(forKey: "characterEmblemBackPath") as! String
+        characterLevel = aDecoder.decodeObject(forKey: "characterLevel") as! Int
         
+        characterItemInventory = aDecoder.decodeObject(forKey: "characterItemInventory") as! [ItemInfo]
+        characterEmblemBack = aDecoder.decodeObject(forKey: "characterEmblemBack") as! UIImage
     }
     
     //To encode the object
     func encode(with aCoder: NSCoder) {
         
         aCoder.encode(characterId, forKey: "characterId")
-        aCoder.encode(characterClassType, forKey: "characterClassType")
-        aCoder.encode(characterEmblemBack, forKey: "characterEmblemBack")
         aCoder.encode(characterLight, forKey: "characterLight")
-        
+        aCoder.encode(characterClassType, forKey: "characterClassType")
+        aCoder.encode(characterEmblemPath, forKey: "characterEmblemPath")
+        aCoder.encode(characterEmblemBackPath, forKey: "characterEmblemBackPath")
+        aCoder.encode(characterLevel, forKey: "characterLevel")
+        aCoder.encode(characterEmblemBack, forKey: "characterEmblemBack")
     }
     
     

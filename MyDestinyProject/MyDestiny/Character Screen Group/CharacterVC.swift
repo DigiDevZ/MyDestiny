@@ -92,27 +92,23 @@ class CharacterVC: AuthenticateVC, UITableViewDelegate, UITableViewDataSource, W
         //If the session deactivates.
     }
     
+    
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
         DispatchQueue.main.async {
             if(message["getCharacters"] as? Bool) != nil{
                 
-                //key to send message over is "characters"
+                var imagePaths = [String]()
+                imagePaths.append(self.characters[0].characterEmblemBackPath)
+                imagePaths.append(self.characters[1].characterEmblemBackPath)
+                imagePaths.append(self.characters[2].characterEmblemBackPath)
                 
-                //Need to figure out why i cant send characters class info over.
-                var characterImages = [UIImage]()
-                
-                #warning("Payloads still cannot be delivered")
-                    //Even with just sending one image, the payload still cannot be delivered, so I will need to figure out how to circumvent this.
-                
-                //Sending over the images instead.
-                for character in self.characters {
-                    characterImages.append(character.characterEmblemBack)
-                }
-            
-                replyHandler( ["characters" : self.characters[0].characterEmblemBack] )
+                replyHandler( ["characterImagePaths" : imagePaths])
             }
         }
     }
     
-    
+    func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
+        
+    }
+
 }

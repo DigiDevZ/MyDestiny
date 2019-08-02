@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ItemInfo {
+class ItemInfo : NSObject, NSCoding {
     
     //Stored
     var itemHash = 0
@@ -32,6 +32,34 @@ class ItemInfo {
         self.itemInstance = itemInstance
         self.bucketHash = bucketHash
         self.itemType = itemType
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init(itemHash: 0, itemInstance: "", bucketHash: 0, itemType: "")
+        
+        itemHash = aDecoder.decodeObject(forKey: "itemHash") as! Int
+        itemInstance = aDecoder.decodeObject(forKey: "itemInstance") as! String
+        bucketHash = aDecoder.decodeObject(forKey: "bucketHash") as! Int
+        
+        itemType = aDecoder.decodeObject(forKey: "itemType") as! String
+        
+        itemIcon = aDecoder.decodeObject(forKey: "itemIcon") as! UIImage
+        itemIconPath = aDecoder.decodeObject(forKey: "itemIconPath") as! String
+        itemName = aDecoder.decodeObject(forKey: "itemName") as! String
+        itemDescription = aDecoder.decodeObject(forKey: "itemDescription") as! String
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(itemHash, forKey: "itemHash")
+        aCoder.encode(itemInstance, forKey: "itemInstance")
+        aCoder.encode(bucketHash, forKey: "bucketHash")
+        
+        aCoder.encode(itemType, forKey: "itemType")
+        
+        aCoder.encode(itemIcon, forKey: "itemIcon")
+        aCoder.encode(itemIconPath, forKey: "itemIconPath")
+        aCoder.encode(itemName, forKey: "itemName")
+        aCoder.encode(itemDescription, forKey: "itemDescription")
     }
 
 }

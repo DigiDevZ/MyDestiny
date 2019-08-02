@@ -28,7 +28,8 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
     fileprivate let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
     var characters = [CharacterInfo]()
-    var characterImageArray = [UIImage]()
+    var characterImagePathArray = [String]()
+    var characterImages = [UIImage]()
     
     @IBOutlet weak var tableView: WKInterfaceTable!
     
@@ -72,11 +73,14 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
                 
                 DispatchQueue.main.async {
                     //MARK: I think this class cannot sent correctly as a payload, will be fixing this soon.
-                    if let data = replyData["characters"] as? UIImage {
+                    if let data = replyData["characterImagePaths"] as? [String] {
                         print("data grabbed")
-                        self.characterImageArray.append(data)
+                        
+                        self.characterImagePathArray.append(contentsOf: data)
                         //If the characters have been catched, then load the table view.
-                        self.loadTableView()
+                        for path in self.characterImagePathArray {
+                            self.getEmblemBackImage(path: path)
+                        }
                     }
                 }
             }, errorHandler: { (error) -> Void in
@@ -86,40 +90,64 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
     }
     
     public func loadTableView() {
-        tableView.setNumberOfRows(characters.count, withRowType: "RowController")
+        tableView.setNumberOfRows(characterImagePathArray.count, withRowType: "RowController")
         
-        //Repalce this with a foreach loop.
-        for (i, _) in characters.enumerated() {
+        //For loop the function.
+        for (i,_) in characterImagePathArray.enumerated() {
             if let rowController = tableView.rowController(at: i) as? RowController {
                 
                 //Set the image to the view.
-                rowController.iv_characterEmblem.setImage(characterImageArray[i])
+                rowController.iv_characterEmblem.setImage(characterImages[i])
             }
         }
+        
     }
     
-//    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
-//
-//        //Create message to send.
-//        let myValues : [String: Any] = ["getKaijuDetail":rowIndex]
-//        session?.sendMessage(myValues, replyHandler: {
-//            replyData in
-//
-//            DispatchQueue.main.async {
-//                if let data = replyData["kaijuDetails"] as? [String] {
-//                    //Push to the next controller with the data retrieved.
-//
-//                    var kaijuDetails = [String]()
-//                    kaijuDetails.append(data[0]) // name
-//                    kaijuDetails.append(data[1]) // faction
-//
-//                    self.pushController(withName: "DetailInterfaceController", context: kaijuDetails)
-//                }
-//            }
-//
-//        }, errorHandler: { (error) -> Void in
-//            print(error.localizedDescription)
-//        })
-//    }
+    
+    func getEmblemBackImage(path: String)
+    {
+        let rootPath = "https://www.bungie.net"
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        if let validURL = URL(string: rootPath + path)
+        {
+            var request = URLRequest(url: validURL)
+            request.httpMethod = "GET"
+            request.addValue("66c4a62bb86b40abb64894ba96676e0b", forHTTPHeaderField: "X-API-KEY")
+            request.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
+            
+            let dispatch = DispatchGroup()
+            let task = session.dataTask(with: request, completionHandler: { (opt_data, opt_response, opt_error) in
+                
+                dispatch.enter()
+                //Bail Out on error
+                if opt_error != nil { return }
+                
+                //Check the response, statusCode, and data
+                guard let response = opt_response as? HTTPURLResponse,
+                    response.statusCode == 200,
+                    let data = opt_data
+                    else { print("JSON object creation failed"); return }
+                
+                //Grab the image from the data and store it in the variable.
+                let emblemBackground = UIImage(data: data)!
+                self.characterImages.append(emblemBackground)
+                dispatch.leave()
+                
+                dispatch.notify(queue: DispatchQueue.main, execute: {
+                    if(self.characterImages.count == 3) {
+                        print("loading table view")
+                        self.loadTableView()
+                    }
+                    
+                })
+                
+            })
+            task.resume()
+        }
+        //End of getEmblemBackImg
+    }
     
 }
