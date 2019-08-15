@@ -56,10 +56,6 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.didDeactivate()
     }
     
-    
-    
-    
-    
     // MARK: Custom methods
     
     public func getCharacters() {
@@ -148,6 +144,10 @@ class CharacterInterfaceController: WKInterfaceController, WCSessionDelegate {
             task.resume()
         }
         //End of getEmblemBackImg
+    }
+    
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
+        print("row touched")
     }
     
 }
