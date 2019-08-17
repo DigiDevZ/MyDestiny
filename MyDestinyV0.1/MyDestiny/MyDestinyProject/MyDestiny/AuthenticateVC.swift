@@ -60,66 +60,69 @@ class AuthenticateVC: UIViewController {
     
     @IBAction func authenticateTapped(_ sender: Any)
     {
-        authenticateButton.isEnabled = false
-        authenticateButton.isHidden = true 
+        print("Tapped")
+        ManifestUtility.checkManifestExists()
         
-        loadingIndicator.isHidden = false
-        loadingIndicator.startAnimating()
-        
-        //Randomize this for every client.
-        let clientState = "0101"
-        
-        //Fill the oauthswift with the necessary info.
-        oauthswift = OAuth2Swift(
-            consumerKey:    "27050",//ClientID provided by Bungie.
-            consumerSecret: "R0Wka5em2tU6mPZTrFRtaLfFPjtCmtXe3kdSXfDJP1Y",//Client secret provided by Bungie.
-            authorizeUrl:   "https://www.bungie.net/en/OAuth/Authorize?client_id=27050&response_type=code&state=\(clientState)",
-            accessTokenUrl: "https://www.bungie.net/platform/app/oauth/token/",
-            responseType:   "code"
-        )
-        
-        oauthswift!.allowMissingStateCheck = true
-        
-        //Prepare for a new view controller to appear.
-        oauthswift!.authorizeURLHandler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
-        
-        //Main magic happens here.
-        //For scope it is said to omit it, so I am not putting anything in it.
-        oauthswift!.authorize(withCallbackURL: URL(string: "MyDestinyVaultAppleiOS://"), scope: "", state: clientState, success: {
-            (credential, response, parameters) in
-            //Success
-            
-            //Capturing the authorization information and storing the vitals into the keychain.
-            let userAccessToken = parameters["access_token"] as! String
-            let userAccessTokenExpire = parameters["expires_in"] as! Int
-            let userRefreshToken = parameters["refresh_token"] as! String
-            let userRefreshTokenExpire = parameters["refresh_expires_in"] as! Int
-            let userMembershipID = parameters["membership_id"] as! String
-            let userTokenType = parameters["token_type"] as! String
-            
-            print("ACCESS TOKEN: " + userAccessToken)
-            
-            //Keychain saving started.
-            let saveSuccesful: Bool = KeychainWrapper.standard.set(userRefreshToken, forKey: "d2MyDestinyRefreshToken")
-            
-            let _: Bool = KeychainWrapper.standard.set(userAccessToken, forKey: "d2MyDestinyAccessToken")
-            
-            print("DEBUG: Saving tokens to keychain: \(saveSuccesful)")
-            
-            let retrievedString: String? = KeychainWrapper.standard.string(forKey: "d2MyDestinyRefreshToken")
-            
-            print("DEBUG: retrieving tokens from keychain: \(retrievedString ?? "No refresh token saved.")")
-            //Keychain saving done.
-            
-            //Create the currentUser.
-            self.currentUser = UserInfo(accessToken: userAccessToken, accessTokenExpire: userAccessTokenExpire, refreshToken: userRefreshToken, refreshTokenExpiration: userRefreshTokenExpire, membershipID: userMembershipID, tokenType: userTokenType)
-            
-            //Begin the chain of loading in the users information.
-            self.loadUserInfo(currentUser: self.currentUser!)
-            
-        }, failure: { (error) in
-            //Failure
-        })
+//        authenticateButton.isEnabled = false
+//        authenticateButton.isHidden = true
+//
+//        loadingIndicator.isHidden = false
+//        loadingIndicator.startAnimating()
+//
+//        //Randomize this for every client.
+//        let clientState = "0101"
+//
+//        //Fill the oauthswift with the necessary info.
+//        oauthswift = OAuth2Swift(
+//            consumerKey:    "27050",//ClientID provided by Bungie.
+//            consumerSecret: "R0Wka5em2tU6mPZTrFRtaLfFPjtCmtXe3kdSXfDJP1Y",//Client secret provided by Bungie.
+//            authorizeUrl:   "https://www.bungie.net/en/OAuth/Authorize?client_id=27050&response_type=code&state=\(clientState)",
+//            accessTokenUrl: "https://www.bungie.net/platform/app/oauth/token/",
+//            responseType:   "code"
+//        )
+//
+//        oauthswift!.allowMissingStateCheck = true
+//
+//        //Prepare for a new view controller to appear.
+//        oauthswift!.authorizeURLHandler = SafariURLHandler(viewController: self, oauthSwift: self.oauthswift!)
+//
+//        //Main magic happens here.
+//        //For scope it is said to omit it, so I am not putting anything in it.
+//        oauthswift!.authorize(withCallbackURL: URL(string: "MyDestinyVaultAppleiOS://"), scope: "", state: clientState, success: {
+//            (credential, response, parameters) in
+//            //Success
+//
+//            //Capturing the authorization information and storing the vitals into the keychain.
+//            let userAccessToken = parameters["access_token"] as! String
+//            let userAccessTokenExpire = parameters["expires_in"] as! Int
+//            let userRefreshToken = parameters["refresh_token"] as! String
+//            let userRefreshTokenExpire = parameters["refresh_expires_in"] as! Int
+//            let userMembershipID = parameters["membership_id"] as! String
+//            let userTokenType = parameters["token_type"] as! String
+//
+//            print("ACCESS TOKEN: " + userAccessToken)
+//
+//            //Keychain saving started.
+//            let saveSuccesful: Bool = KeychainWrapper.standard.set(userRefreshToken, forKey: "d2MyDestinyRefreshToken")
+//
+//            let _: Bool = KeychainWrapper.standard.set(userAccessToken, forKey: "d2MyDestinyAccessToken")
+//
+//            print("DEBUG: Saving tokens to keychain: \(saveSuccesful)")
+//
+//            let retrievedString: String? = KeychainWrapper.standard.string(forKey: "d2MyDestinyRefreshToken")
+//
+//            print("DEBUG: retrieving tokens from keychain: \(retrievedString ?? "No refresh token saved.")")
+//            //Keychain saving done.
+//
+//            //Create the currentUser.
+//            self.currentUser = UserInfo(accessToken: userAccessToken, accessTokenExpire: userAccessTokenExpire, refreshToken: userRefreshToken, refreshTokenExpiration: userRefreshTokenExpire, membershipID: userMembershipID, tokenType: userTokenType)
+//
+//            //Begin the chain of loading in the users information.
+//            self.loadUserInfo(currentUser: self.currentUser!)
+//
+//        }, failure: { (error) in
+//            //Failure
+//        })
     }
     
     //MARK: Segue
@@ -240,6 +243,8 @@ class AuthenticateVC: UIViewController {
     
     func downloadManifest(manifestPath: String)
     {
+        
+        print("DEBUG: manifest path: " + manifestPath) 
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         if let validURL = URL(string: "https://www.bungie.net/" + manifestPath)
