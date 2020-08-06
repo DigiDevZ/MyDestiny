@@ -1,6 +1,8 @@
 # MyDestiny
 MyDestiny is a Destiny 2 companion app project that I have been working on.
 
+## NO LONGER WORKING ON THIS PROJECT AS OF 2018
+
 ## Current build of project
   * 0.9.1
 
